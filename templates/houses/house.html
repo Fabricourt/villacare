@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Trucks & Pickups {% endblock %}
+{% block content %}
+<br>
+<!-- Page Container -->
+
+<div class="w3-content " style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-text-grey ">
+        <div class="w3-display-container w3-margin-bottom">
+          <a href="{% url 'profile' %}"><img src="{{ house.name.profile.image.url }}" style="width:100%; height:350px" alt="Avatar" class="w3-card-4"></a>
+          <div class="w3-display-bottomleft w3-amber w3-opacity-min w3-container w3-text-black" style="width: 100%">
+            <h2>{{ house.name.first_name|capfirst }} {{ house.name.last_name|capfirst }}</h2>
+            <p></p>
+          </div>
+        </div>
+        <div class="w3-container w3-white w3-card-4 w3-shadow w3-margin-top">
+          <br>
+          <p><i class="fas fa-home  w3-margin-right w3-large w3-text-theme "></i>Type of House {% for type_of_house in house.type_of_house.all %} {{ type_of_house }},{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+          <p><i class="fas fa-shower  w3-margin-right w3-large w3-text-theme "></i>Bathrooms {% for bathrooms in house.bathrooms.all %} {{ bathrooms }},{% if not forloop.last %}, {% endif %}{% endfor %} </p>
+          <p><i class="fas fa-bed  w3-margin-right w3-large w3-text-theme "></i>Bedrooms {% for bedroom in house.bedroom.all %} {{ bedroom }},{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+
+          <hr class="w3-theme w3-amber" style="width:100%">
+          <br>
+          <p><i class="fas fa-money  w3-margin-right w3-large w3-text-theme "></i><span class="btn btn-danger">Kes {{ house.price }} +</span></p>
+          <br>
+          <hr class="w3-amber" Style="width:100%">
+          <p><i class="fas fa-address-card fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ house.address }}</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ house.town }}</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ house.email }}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ house.phone1 }} / {{ house.phone2 }}</p>
+
+          <hr>
+
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+      
+      {% include 'partials/_houseslide.html' %}
+
+      <br>
+ 
+      <div class="w3-container  w3-white w3-margin-bottom w3-card">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>About Me</h2>
+        
+        <div class="w3-container">
+            <hr>
+          {{ house.about_me|safe }}
+          
+        </div>
+      </div>
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+</section>
+{% endblock %}

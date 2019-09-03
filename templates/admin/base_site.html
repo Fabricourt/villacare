@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+  <h1 id="head" class  >
+      <a href="{% url 'profile' %}"><img  src="{{ user.profile.image.url }}" class="w3-circle w3-padding w3-card-4 w3-border  w3-card-4" style="width:45px; height:50px;"></a> Admin Area
+  </h1>
+{% endblock %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+  
+{% endblock %}

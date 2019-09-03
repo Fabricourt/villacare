@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block title %} | Testimonials {% endblock %}
+
+{% block content %}
+<section class="w3-theme-l4">
+    <!--Testimonials -->
+    <div class="card w3-margin mb-3">
+    <h1 class="w3-jumbo w3-center">What Our Clients Are Saying</h1>
+        
+    </div>
+        
+         <!-- TESTIMONIAL -->
+         <section id="testament">
+                <div class="container">
+                     {% if testimonials %}
+                         
+                               {% for testimonial in testimonials %}
+                                    <div class="w3-panel">             
+                                         <div class="w3-container ">
+                                              <h4 class="w3-left-align" >{{testimonial.user.first_name|capfirst}} {{testimonial.user.last_name|capfirst}}</h4>
+                                              <p class="w3-left-align">{{testimonial.post_date}}</p>
+                                              <img src="{{ testimonial.testimonials_image.url}}" alt=" " class="w3-left w3-border w3-padding w3-circle" style="padding:2px; width:115px; height:100px;">
+                                              <p class="w3-left-align">{{testimonial.message|safe}}</p>
+                                         </div>
+                                    </div>
+                               {% endfor %}
+                     {% else %}                                    
+                     <p>There are no testimonies</p>
+                    {% endif %}   
+                </div>
+            </section>
+        
+
+
+
+{% endblock %}

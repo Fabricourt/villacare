@@ -1,0 +1,40 @@
+{% load static %}
+
+{% load humanize %}
+
+<div class="w3-col m6 l4 plot w3-margin-bottom w3-display-container w3-card-4 w3-border w3-padding ">
+        <img src="{{ listing.photo_main.url }}" alt="Norway" style="width:100%; height:350px;" class="w3-card-4 w3-third imagex w3-border w3-round w3-xlarge">
+        <div class="w3-display-topleft w3-container "><span class="w3-button w3-border-amber w3-card-4 w3-margin-top text-black w3-small w3-amber "><b>{{ listing.plot_size }}, {{ listing.town }}, Ks{{ listing.price|intcomma }}</b></span></div>
+        <div class="w3-display-bottomright w3-hide-large w3-container"><a href="#" class="w3-btn w3-margin-bottom w3-padding w3-amber w3-border-amber w3-hover-green w3-circle "><b>></b></a></div>
+
+            <div class="w3-container " >
+              <div class=" w3-round  overlayx w3-card-4 w3-border  w3-hover-shadow  w3-light-grey ">
+                <div class="listing-heading w3-margin-top text-center">
+                  <h4 class="text-primary"><b>{{ listing.title }}</b></h4>
+                  <p><i class="fas fa-map-marker text-secondary "></i> {{ listing.town }}, {{ listing.location }} <br> <i class="fas fa-th-large w3-text-brown"></i> Size {{ listing.plot_size }}</p>
+           
+                </div>     
+                <div class="row py-2 w3-margin-left w3-margin-right ">
+                  <div class="w3-center col-12">
+                        <i class="fas fa-user text-danger"></i> Seller {{ listing.realtor }}
+                        <p class="w3-small w3-center">distances from main road, water, & electricity</p>
+                      </div>
+                  
+                  <div class="col-4 w3-center ">
+                    <i class="fa fa-road text-dark"></i><br>{{ listing.roads }}</div>
+                  
+                  <div class="col-4 w3-center">
+                    <i class="fas fa-tint text-info"></i><br> {{ listing.water}}</div>
+
+                  <div class="col-4 w3-center">
+                  <i class="fa fa-lightbulb-o text-warning"></i><br>{{ listing.electricity }}</div>         
+                  <div class="col-12 w3-center w3-small">             
+                      <i class="fas fa-clock text-primary "></i>Posted {{ listing.list_date | timesince }}</div>          
+                  </div>
+                <a href="{% url 'listing' listing.id %}" style="text-decoration: none;"> <p><button class="w3-btn w3-block w3-teal w3-hover-amber">Learn More About This Plot</button></p></a>
+              
+              </div>
+        </div>
+        
+  
+    </div>

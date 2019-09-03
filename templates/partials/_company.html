@@ -1,0 +1,122 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<style>
+.social-card-header{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 96px;
+}
+.social-card-header i {
+    font-size: 32px;
+    color:#FFF;
+}
+.bg-facebook {
+    background-color:#3b5998;
+}
+.text-facebook {
+    color:#3b5998;
+}
+.bg-google-plus{
+    background-color:#dd4b39;
+}
+.text-google-plus {
+    color:#dd4b39;
+}
+.bg-twitter {
+    background-color:#1da1f2;
+}
+.text-twitter {
+    color:#1da1f2;
+}
+.bg-pinterest {
+    background-color:#bd081c;
+}
+.text-pinterest {
+    color:#bd081c;
+}
+.share:hover {
+        text-decoration: none;
+    opacity: 0.8;
+}
+</style>
+<div class="container">
+   <h3 class="pb-3 mb-4 font-italic border-bottom">
+   Property Companies
+   </h3>
+   <div class="row">
+	{% for company in companies %}
+      <div class="col-md-6" style="height:300px;">
+         <div class="card flex-md-row mb-4 shadow-sm h-md-250 w3-bottombar w3-hover-shadow w3-card-4">
+				<header class="w3-right w3-header w3-hide-large w3-card-4 w3-win8-crimson w3-container w3-padding w3-margin-top">
+						<img class="w3-card-4  card-img-right w3-circle w3-right w3-hide-large  flex-auto " alt="supplier pic" src="{{ company.photo_main.url }}" style="width: 70px; height: 70px;">
+				
+				</header>			 
+            <div class="card-body  d-flex flex-column align-items-start">
+				<strong class="d-inline-block mb-2 text-primary">{% for machine_e in company.machine_e.all %} {{ machine_e }},{% if not forloop.last %}, {% endif %}{% endfor %} 
+					<span class="w3-text-red">{{ company.name|capfirst }}</span> </strong> 
+				<hr class="w3-red" style="width:100%">
+               <h6 class="mb-0">
+				{{ company.phone1}} - {{ company.phone2 }}
+               </h6>
+               <div class="mb-1 text-muted small">{{ company.town}}</div>
+               <p class="card-text mb-auto">{{ company.about_me|slice:"130"|safe }}....</p>
+			   <a class="btn btn-outline-primary btn-sm" role="button" href="{% url 'company' company.id %}">Continue reading</a>
+			  
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block " alt="Thumbnail [200x250]" src="{{ company.photo_main.url }}" style="width: 200px; height: auto;">
+         </div>
+	  </div>
+	{% endfor %}
+	</div>
+</div>
+
+
+<div class="row">
+        <div class="col-md-12">
+          {% if machines.has_other_pages %}
+            <ul class="pagination">
+              {% if machines.has_previous %}
+                <li class="page-item">
+                  <a href="?page={{v.previous_page_number}}" class="page-link">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&laquo;</a>
+                </li>
+              {% endif %}
+              {% for i in machines.paginator.page_range %}
+                {% if machines.number == i %}
+                  <li class="page-item active">
+                    <a class="page-link">{{i}}</a>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if machines.has_next %}
+                <li class="page-item">
+                  <a href="?page={{companies.next_page_number}}" class="page-link">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&raquo;</a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      
+     

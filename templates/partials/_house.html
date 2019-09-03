@@ -1,0 +1,120 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.social-card-header{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 96px;
+}
+.social-card-header i {
+    font-size: 32px;
+    color:#FFF;
+}
+.bg-facebook {
+    background-color:#3b5998;
+}
+.text-facebook {
+    color:#3b5998;
+}
+.bg-google-plus{
+    background-color:#dd4b39;
+}
+.text-google-plus {
+    color:#dd4b39;
+}
+.bg-twitter {
+    background-color:#1da1f2;
+}
+.text-twitter {
+    color:#1da1f2;
+}
+.bg-pinterest {
+    background-color:#bd081c;
+}
+.text-pinterest {
+    color:#bd081c;
+}
+.share:hover {
+        text-decoration: none;
+    opacity: 0.8;
+}
+</style>
+<div class="container">
+   <h3 class="pb-3 mb-4 font-italic border-bottom">
+    Houses Available
+   </h3>
+   <div class="row">
+
+	{% for house in houses %}
+      <div class="col-sm w3-margin-top  w3-margin-bottom w3-display-container" ">
+        <div class="w3-border w3-card-4 ">
+            <a href="{% url 'house' house.id %}"><img src="{{ house.photo_main.url }}" class="w3-card-4 w3-shadow"  alt="Alps" style="width:100%; height:300px;">
+            <span class="w3-display-bottomright btn btn-outline-danger w3-card-4  w3-opacity w3-text-black w3-hide-large w3-hide-medium"> details </span></a>
+            <div class="w3-container w3-center w3-white w3-hide-small ">
+              <br>
+                <span class="w3-white w3-xlarge btn w3-round w3-margin-bottom w3-border w3-card-4" style="width:100%;" >
+                  <a style="text-decoration-line: none;" class="w3-text-black"  href="{% url 'house' house.id %}"> Details </a>
+                  <br>
+                </span>
+                <br>
+            </div>
+        </div>
+	  </div>
+  {% endfor %}
+  <br><br><br>
+  </div>
+  
+
+
+
+
+<div class="row">
+        <div class="col-md-12">
+          {% if houses.has_other_pages %}
+            <ul class="pagination">
+              {% if houses.has_previous %}
+                <li class="page-item">
+                  <a href="?page={{v.previous_page_number}}" class="page-link">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&laquo;</a>
+                </li>
+              {% endif %}
+              {% for i in houses.paginator.page_range %}
+                {% if houses.number == i %}
+                  <li class="page-item active">
+                    <a class="page-link">{{i}}</a>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if houses.has_next %}
+                <li class="page-item">
+                  <a href="?page={{houses.next_page_number}}" class="page-link">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&raquo;</a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+     

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}  | {{ user.username|capfirst }}  {% endblock %}
+{% load humanize %}
+{% block content %}
+
+
+<section class="py-5 text-white">
+    <div class="container ">
+      <div class="row text-center">
+        <div class="col-md-12">
+            <div class="w3-center ">
+
+              </div>
+          <div class="w3-highway-blue w3-padding w3-border w3-opacity-min w3-card-4"> 
+          <h1 class="display-4"> Dashboard</h1>
+          <p class="lead">Here you will find all the contacts you made</p>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+
+    
+<section id="dashboard" class="py-4">
+<div class="container ">
+<div class="row">
+<div class="col-md-12">
+  <div>
+ 
+
+  {% if contact %}
+  </div>
+  <h4 class="w3-padding w3-margin w3-right-align">Viewed listings</h4>
+
+  <div class="w3-responsive">
+      <table class="table w3-table-all">
+    
+      <thead>
+    
+        <tr class="w3-brown">
+          <th  scope="col">Date of Contact</th>
+          <th  scope="col">#</th>
+          <th  scope="col">Property</th>
+          <th  scope="col">Message</th>
+          <th ></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sema in contact %}
+          <tr class="w3-border">
+            <td>{{ sema.contact_date }}</td>
+            <td>{{ sema.id }}</td>
+            <td>{{ sema.listing }}</td>
+            <td>{{ sema.message}}</td>
+            <td class="">
+              <a class="btn  w3-green" href="{% url 'listing' sema.listing_id %}">View Listing</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <p>You have not made any inquiries</p>
+  {% endif %}
+  <br>   <br>   <br>
+<!-- payment table-->
+ 
+      </div>
+       
+
+                
+ 
+        
+        <!--end of malipo-->
+    </div>
+    </div> 
+  </div>
+
+</section> 
+
+  {% endblock %}

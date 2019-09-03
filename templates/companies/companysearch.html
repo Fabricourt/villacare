@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Houses For Sale & Rent  Search {% endblock %}
+{% block content %}
+
+<section class="w3-margin-top ">
+    <div class="container w3-padding w3-margin-bottom w3-border w3-card-4  ">
+        {% include 'partials/_companysearch.html' %}
+    </div>
+    <div class="container w3-border w3-card-4  ">
+      
+      {% include 'partials/_company.html' %}
+    </div>
+     
+      <br><br><br>
+      
+  </section>
+  
+{% endblock %}

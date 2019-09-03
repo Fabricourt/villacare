@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | About  {% endblock %}
+
+{% block content %}
+<!-- Top Bar -->
+
+
+<!-- Navbar -->
+
+<div >
+    <header class="w3-display-container w3-content w3-center" style="max-width:100%">
+        <!--<img class="w3-image" src="{% static 'img/about.jpg' %}" alt="About Pic" width="100%" height="400">-->  
+   
+
+   </header>
+  <div id="about" class="py-4">
+  
+    <div class="container w3-white">
+
+      <div class="row">
+        <div class="col-md-8">
+     
+          <p class="mt-4">Kwela Group empowers its clients to grow through innovative real estate solutions.
+              "Kwela",  means 'to climb' in Bemba, a Bantu Language from Zambia. The name truly 
+              captrues the brand promise that  we make to our clients: taking you higher
+            </p>
+  
+  
+            <p class="mt-4">What makes us diffrent we do not sell properties we connect you to them.
+               Do not hestitate to give us a call tell us what is in your mind. If it's about us  you will definately get a good answer.
+               If its about you we will definately listen.
+              </p>
+         
+          <h4 class="w3-text-green">Mission</h4>
+          <p class="mt-4">To drive our clients growth through innovative and practical 
+            real estate solutions.
+          </p>
+
+          <h4 class="w3-text-green">Vision</h4>
+          <p class="mt-4">
+            To be the benchmark investemtn company in the provision of innovative
+             real estate solutions in the region
+            </p>
+          <h4 class="w3-text-green">Values</h4>
+          <p class="mt-4">Our core values include:
+            Our solutions are innovative and well researched and thought out.
+            <ol>
+              <li><span class="w3-text-green">Innovative </span> Our solutions are innovative
+                 and well researched and thought out.</li>
+              <li><span class="w3-text-green">Professional </span> We adhere to rules and Professional
+              standards in our business practices</li>
+              <li><span class="w3-text-green">Practical </span> We are pragmatic. We don't over promise. We do Maths.</li>
+              <li><span class="w3-text-green">Integrity-Driven </span> We espouse the values 
+              of honesty and ethical practices in running our business.</li>
+              comfort and welfare in our solutions. It is not just about money.</li>
+              <li><span class="w3-text-green">Diligent </span> We toil for you!</li>
+            </ol>
+            </p>
+            <p class="mt-4">To drive our clients growth through innovative and practical 
+                real estate solutions.
+              </p>
+            <p>Kwela purchases and sells only land which has real value. We take the growth of our customers investment
+              seriously. Therefore we only link you with properties whose value will definately be on the positive side. </p>
+              
+          </p>
+
+         
+      
+        </div>
+        <div class="col-md-4 " >
+          <br><br><br>
+            {% if mvp_realtors %}
+              {% for realtor in mvp_realtors %}
+              <div class="w3-center" style="font-family: arial; font-size: 18px;">
+                  <div class="w3-card-4 w3-border-theme">
+                      <img src="{{ realtor.photo.url }}" alt="Realtor" style="width:100%; height:250px;">
+                      <p></p>
+                      <h1>{{ realtor.name }}</h1>
+                      <p>Kwela Group Limited</p>
+                      
+                      <p class="w3-text-grey">  <i class="fas fa-award w3-text-red  mb-3"></i> Realtor </p>
+                    
+                      <div style="margin:0;">
+                        <a href="#" ><i class="fab fa-instagram"></i></a> 
+                        <a href="#"><i class="fab fa-twitter"></i></a>  
+                        <a href="#" ><i class="fab fa-linkedin"></i></a>  
+                        <a href="#"><i class="fab fa-facebook"></i></a> 
+                        <p>{{ realtor.email }}</p>
+                      </div>
+                      <p  class="w3-theme-d5 w3-card w3-padding">{{ realtor.phone }}</p>
+                      <br>
+                      
+                    </div>
+                  </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Work -->
+  <section id="work" class="text-white text-center w3-padding-64 w3-highway-green w3-opacity-min">
+     
+    <h2 class="display-4">Our Team Of Realtors
+      
+    </h2>
+    
+ 
+   
+  </section>
+    <!-- Team -->
+  <section id="team" class="py-5">
+      {% include 'partials/_realtors.html' %}
+    </section>
+
+     
+         
+          
+       
+          
+          
+          
+      
+  </div>
+  {% endblock %}

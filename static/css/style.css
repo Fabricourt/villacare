@@ -1,0 +1,226 @@
+body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Raleway", sans-serif
+}
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+* {
+ box-sizing: border-box;
+}
+
+.zoom {
+ 
+ transition: transform .2s;
+
+
+}
+
+.zoom:hover {
+ -ms-transform: scale(1.0); /* IE 9 */
+ -webkit-transform: scale(1.0); /* Safari 3-8 */
+ transform: scale(1.0); 
+}
+ 
+
+.btn-secondary {
+  color: #fff !important; }
+
+img {
+  width: 100%; }
+
+.logo {
+  width: 80px; }
+
+.navbar {
+  opacity: 0.9;
+  text-transform: uppercase; }
+
+.social a {
+  margin-right: 0.4rem; }
+
+#showcase {
+  background: url(https://cdn.pixabay.com/photo/2018/09/28/01/54/landscape-3708301_960_720.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 650px;
+  color: #fff;
+  padding-top: 6rem; }
+  #showcase .home-search {
+    min-height: 400px;
+    position: relative;
+    border-radius: 5px; }
+  #showcase .overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 400px;
+    width: 100%;
+    }
+
+#services {
+  background: url(../img/building.jpg) no-repeat top center fixed/cover;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden; }
+  #services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(9, 240, 59, 0.8); }
+
+#showcase-inner {
+  background: url(../img/building.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px; }
+  #showcase-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(9, 240, 59, 0.8);; }
+  #showcase-inner.showcase-search {
+    min-height: 270px; }
+
+#work {
+  padding: 6rem 0; }
+
+.listing-preview a {
+  position: relative; }
+
+@media (max-width: 991px) {
+  #showcase {
+    padding-top: 4rem; }
+    #showcase h1 {
+      font-size: 40px; }
+  .hide-md-down {
+    display: none; } }
+
+@media (max-width: 768px) {
+  #showcase {
+    padding-top: 3rem; }
+    #showcase h1 {
+      font-size: 40px; }
+    #showcase p {
+      display: none; }
+  #top-bar {
+    text-align: center; }
+    #top-bar .social {
+      text-align: center !important; } }
+
+@media (max-width: 576px) {
+  #showcase h1 {
+    font-size: 30px; }
+  #showcase-inner h1 {
+    font-size: 40px; } }
+
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .zoom {
+      
+      transition: transform .2s;
+    
+     
+    }
+    
+    .zoom:hover {
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.5); 
+    }
+    
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #eee;
+  }
+  
+  .header {
+      height: 100vh;
+      background-image: 
+      linear-gradient(to right bottom, 
+       rgba(76, 216, 255, 0.8),
+       rgba(30, 108, 217, 0.8)),
+       url('https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg');
+      
+    background-size: cover;
+      background-position: top;
+      position: relative;
+  
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+  
+  .brand-box {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+  }
+  
+  .brand { font-size: 20px; }
+  
+  .text-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+  }
+  
+  .heading-primary {
+      color: #fff;
+      text-transform: uppercase;
+  
+      backface-visibility: hidden;
+      margin-bottom: 30px;
+  }
+  
+  .heading-primary-main {
+      display: block;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 5px;
+  }
+  
+  .heading-primary-sub {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 7.4px;
+  }
+  
+  .btn:link,
+  .btn:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 100px;
+      transition: all .2s;
+      position: relative;
+  }
+  
+  .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-white {
+      background-color: #fff;
+      color: #777;
+    font-size: 14px;
+  }

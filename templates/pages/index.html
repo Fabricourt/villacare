@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load humanize %}
+
+{% block title %} | Home {% endblock %}
+
+{% block content %}
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+       
+<!-- Page content -->
+<br><br>
+<div class="w3-content w3-padding-large  w3-margin-bottom   " style="max-width:1564px">
+
+       <!-- Propertu section Section -->
+       <div class="w3-container w3-padding w3-card-4 w3-white  w3-opacity-min " id="projects">
+        <h3 class="w3-border-bottom  w3-border-amber w3-padding-16 w3-bottombar">
+           
+         Property Connect
+        </h3>
+      
+        <span class="w3-center">
+        <span class="btn w3-border-amber w3-amber w3-text-white w3-margin-bottom w3-hover-white w3-padding w3-card-4"><a href="{% url 'listings' %}" class="w3-text-black w3-hover-text-black" style="text-decoration-line: none;">Plots For Sale</a></span>
+        <span class="btn w3-border-amber w3-amber w3-text-white  w3-margin-bottom w3-hover-white w3-padding w3-card-4"><a href="{% url 'houses' %}" class="w3-text-black w3-hover-text-black" style="text-decoration-line: none;">Houses For Sale</a></span>
+        <span class="btn w3-border-amber w3-amber w3-text-white w3-margin-bottom w3-hover-white w3-padding w3-card-4 "><a href="{% url 'rentals' %}" class="w3-text-black w3-hover-text-black" style="text-decoration-line: none;">Houses For Rent</a></span>
+
+        
+      </span>
+
+      </div>
+
+      <br><br>
+      <div class="w3-card-4 w3-card ">
+      <div class="w3-row-padding">
+        <br><br>
+        
+         
+          {% for property_link in property_links %}
+          <div class="w3-col l4 m6 w3-margin-bottom">
+          <div class="w3-display-container w3-card-4 ">
+          <a href="/{{property_link.link_url}}">
+            <div class="w3-amber w3-display-topleft w3-card-4 w3-btn  w3-padding">
+              {{ property_link.link_name}}
+            </div>
+            <img src="{{ property_link.link_pic.url }}" class="w3-border w3-card-4 w3-padding " alt="House" style="width:100%; height:270px;">
+          </a>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+      </div>
+      <br><br>
+
+
+      <br><br>
+    </div>
+  
+ 
+
+{% endblock %}

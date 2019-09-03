@@ -1,0 +1,95 @@
+{% load static %}
+<style>
+        body, html {
+          height: 100%;
+        }
+        
+        .parallax {
+          /* The image used */
+          background-image: url('http://www.kwela.co.ke/media/links/2019/08/22/architecture-107598_960_720.jpg');
+        
+          /* Full height */
+          height: 100%; 
+        
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        
+        /* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+        @media only screen and (max-device-width: 1366px) {
+          .parallax {
+            background-attachment: scroll;
+          }
+        }
+        </style>
+     <!-- Showcase -->
+     
+    <section class=" w3-display-container ">
+      
+       
+        <div class="text-center   home-search  w3-display">
+          <div class="overlay container  ">
+         
+            <div class="search  w3-opacity-min text-black">
+              <form class="w3-padding-64  " action="{% url 'searchus' %}">
+                      <h1 class="display-4 mb-4 w3-white w3-padding  w3-text-black">
+                      Houses For Sale 
+                      <hr class="w3-amber" style="width:100%">
+                      <p class="lead  w3-text-black">Finding Houses Made Easy</p>
+                      </h1>
+                     
+                 <!-- Form Row 1 -->
+                 <div class="form-row ">
+                  <div class="col-md-12 mb-3 ">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control w3-border-purple" placeholder="Keyword (search)">
+                  </div>
+
+         <!-- <div class="col-md-6 mb-3 ">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control w3-border-purple" placeholder="Keyword (name)">
+                  </div>-->
+    
+                 
+                  </div>
+                  <!-- Form Row 2  -->
+                  <div class="form-row"> 
+                    <div class="col-md-4 mb-3">
+                     <label class="sr-only">Bedrooms</label>
+                      <select name="bedroom" class="form-control w3-border-purple" id="type">
+                        <option selected="true" disabled="disabled">Bedrooms</option>
+                        {% for key,value in bedroom_choices.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="sr-only">Hire Price</label>
+                         <select name="price" class="form-control w3-border-purple" id="type">
+                           <option selected="true" disabled="disabled">Price</option>
+                           {% for key,value in price_choices.items %}
+                           <option value="{{ key }}">{{ value }}</option>
+                         {% endfor %}
+                         </select>
+                       </div>
+                    <div class="col-md-4 mb-3">
+                      <label class="sr-only">Town</label>
+                      <select name="town" class="form-control w3-border-purple">
+                        <option selected="true" disabled="disabled">Town</option>
+                        {% for key,value in town_choices.items %}
+                          <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                  </div>
+                  <button class="btn w3-amber btn-block mt-4 w3-wide w3-large" type="submit"><b>Submit</b></button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+       
+      </section>

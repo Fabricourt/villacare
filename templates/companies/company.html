@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Companies {% endblock %}
+{% block content %}
+<br>
+<!-- Page Container -->
+
+<div class="w3-content " style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-text-grey ">
+        <div class="w3-display-container w3-margin-bottom">
+          <a href="#"><img src="{{ company.name.profile.image.url }}" style="width:100%; height:350px" alt="Avatar" class="w3-card-4"></a>
+          <div class="w3-display-bottomleft w3-amber w3-opacity-min w3-container w3-text-black" style="width: 100%">
+            <h2>{{ company.name.first_name|capfirst }} {{ company.name.last_name|capfirst }}</h2>
+          </div>
+        </div>
+        <div class="w3-container w3-white w3-card-4 w3-shadow w3-margin-top">
+          <br>
+          <p><i class="fas fa-money  w3-margin-right w3-large w3-text-theme"></i>Kes {{ company.costs_of_ballast }} +</p>
+          <p><i class="fas fa-address-card fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ company.address }}</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ company.town }}</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ company.email }}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-theme"></i>{{ company.phone1 }} / {{ company.phone2 }}</p>
+
+          <hr>
+
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+      
+      {% include 'partials/_companyslide.html' %}
+
+      <br>
+ 
+      <div class="w3-container  w3-white w3-margin-bottom w3-card">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>About Me</h2>
+        
+        <div class="w3-container">
+            <hr>
+          {{ company.about_me|safe }}
+          
+        </div>
+      </div>
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+</section>
+{% endblock %}

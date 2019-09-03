@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Houses {% endblock %}
+{% block content %}
+
+
+<section class="w3-margin-top ">
+  
+<br><br>
+  <div class="container  w3-padding w3-margin-bottom w3-border  w3-card-4  ">
+      {% include 'partials/_housesearch.html' %}
+  </div>
+
+  <div class="container w3-border w3-card-4 w3-margin-bottom ">
+    
+    {% include 'partials/_house.html' %}
+  </div>
+   
+    <br><br><br>
+</section>
+
+
+{% endblock %}

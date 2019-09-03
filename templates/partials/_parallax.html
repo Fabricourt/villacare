@@ -1,0 +1,92 @@
+{% load static %}
+<style>
+        body, html {
+          height: 100%;
+        }
+        
+        .parallax {
+          /* The image used */
+          background-image: url('http://www.kwela.co.ke/media/links/2019/08/22/architecture-107598_960_720.jpg');
+        
+          /* Full height */
+          height: 100%; 
+        
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: repeat;
+          background-size: cover;
+        }
+        
+        /* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+        @media only screen and (max-device-width: 1366px) {
+          .parallax {
+            background-attachment: scroll;
+          }
+        }
+        </style>
+     <!-- Showcase -->
+     
+    <section class=" w3-display-container " style="width:100%;">
+      
+       
+        <div class="text-center   home-search p-5 w3-display">
+          <div class="overlay w3-white w3-card-4 w3-opacity-min w3-round w3-xxlarge p-5">
+         
+            <div class="search">
+              <form class="w3-padding-64  " action="{% url 'search' %}">
+                      <h1 class="display-4 mb-4 w3-highway-green w3-padding w3-hide-small w3-text-white">
+                      Searching Plots Just Got Easy
+                      <p class="lead w3-hide-small w3-text-white">The story of every Property begins with a plot of Land</p>
+                      </h1>
+                     
+                 <!-- Form Row 1 -->
+                 <div class="form-row ">
+                  <div class="col-md-4 mb-3 ">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control w3-border-green" placeholder="Keyword (search)">
+                  </div>
+    
+                  <div class="col-md-4 mb-3">
+                    <label class="sr-only">Location</label>
+                    <input type="text" name="Location" class="form-control w3-border-green" placeholder="Location">
+                  </div>
+    
+                  <div class="col-md-4 mb-3">
+                    <label class="sr-only">Town</label>
+                    <select name="state" class="form-control w3-border-green">
+                      <option selected="true" disabled="disabled">Town (All)</option>
+                      {% for key,value in town_choices.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Form Row 2  -->
+                  <div class="form-row"> 
+                    <div class="col-md-6 mb-3">
+                      <label class="sr-only">Plot size</label>
+                      <select name="plot_size" class="form-control w3-border-green">
+                        <option selected="true" disabled="disabled">Plot Sizes (All)</option>
+                        {% for key,value in plot_size_choices.items %}
+                          <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <select name="price" class="form-control w3-border-green" id="type">
+                        <option selected="true" disabled="disabled">Max Price (Any)</option>
+                        {% for key,value in price_choices.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <button class="btn w3-highway-green btn-block mt-4 w3-wide w3-large" type="submit"><b>Submit</b></button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+       
+      </section>

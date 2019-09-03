@@ -1,0 +1,73 @@
+{% load static %}
+<section>
+        <div class="text-center ">
+          <div class="home-search ">
+            <br><br><br><br>
+            <div class="overlay container w3-card-4 w3-border">
+  
+                    <form class="w3-padding-64  " action="{% url 'search' %}">
+                      <div class="w3-white w3-opacity-min text-black">   
+                      <h1 class="display-4 mb-4  w3-padding  w3-text-black">
+                            Searching Plots Just Got Easy
+                            <hr class="w3-amber" style="width:100%">
+                            <p class="lead l w3-text-black">The story of every Property begins with a plot of Land</p>
+                            </h1>
+
+                          </div>       
+                       <!-- Form Row 1 -->
+                       <div class="form-row ">
+                        <div class="col-sm mb-3 ">
+                          <label class="sr-only">Keywords</label>
+                          <input type="text" name="keywords" class="form-control w3-border-purple" placeholder="Keyword (search)">
+                        </div>
+          
+                    <div class="col-sm mb-3">
+                        <label class="sr-only">Location</label>
+                        <select name="town" class="form-control w3-border-purple">
+                          <option selected="true" disabled="disabled">Location (All)</option>
+                          {% for key,value in location_choices.items %}
+                            <option value="{{ key }}">{{ value }}</option>
+                          {% endfor %}
+                          </select>
+                        </div>
+
+
+
+                       
+                        </div>
+                        <!-- Form Row 2  -->
+                        <div class="form-row"> 
+                          <div class="col-sm-4 mb-3">
+                            <label class="sr-only">Plot size</label>
+                            <select name="plot_size" class="form-control w3-border-purple">
+                              <option selected="true" disabled="disabled">Plot Sizes (All)</option>
+                              {% for key,value in plot_size_choices.items %}
+                                <option value="{{ key }}">{{ value }}</option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                          <div class="col-sm-4 mb-3">
+                            <label class="sr-only">Town</label>
+                            <select name="town" class="form-control w3-border-purple">
+                              <option selected="true" disabled="disabled">Town (All)</option>
+                              {% for key,value in town_choices.items %}
+                                <option value="{{ key }}">{{ value }}</option>
+                              {% endfor %}
+                              </select>
+                            </div>
+                          <div class="col-sm-4 mb-3">
+                            <select name="price" class="form-control w3-border-purple" id="type">
+                              <option selected="true" disabled="disabled">Max Price (Any)</option>
+                              {% for key,value in price_choices.items %}
+                              <option value="{{ key }}">{{ value }}</option>
+                            {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                        <button class="btn w3-win8-amber btn-block mt-4 w3-wide w3-large" type="submit"><b>Submit</b></button>
+                      </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
