@@ -13,7 +13,7 @@
     z-index: 1;
 	}
 	.foo_top_header_one {
-    background-color: #301934;
+    background-color: #341d5b ;
     color: #fff;
 }
 .section_padding_100_70 {
@@ -42,13 +42,13 @@ ul {
     padding: 0;
 }
 .kilimanjaro_bottom_header_one {
-    background-color: #111;
+    background-color:#341d5b ;
 }
 .section_padding_50 {
     padding: 50px 0;
 }
 .kilimanjaro_bottom_header_one p {
-    color: #fff;
+    color: #ffc107;
     margin: 0;
 }
 p, ul li, ol li {
@@ -321,3 +321,85 @@ p, ul li, ol li {
             </div>
         </div>
     </footer>
+
+
+    <!-- Footer 
+<style>
+        a {
+          text-decoration:none;
+        }
+        </style>
+         
+        <footer class="section footer-classic w3-padding context-dark bg-image" style="background-image: linear-gradient(to bottom, #5be8ee, #00b4d6, #0080b6, #004e8e, #061d5c);" >
+                <div class="container">
+                  {% for footer in footers %}
+                  <div class="row row-30">
+                    <div class="col-md-4 col-xl-5 ">
+                      <div class="pr-xl-4"><a class="brand  w3-padding w3-margin-top w3-border-white w3-hover-white " href="/" style="text-decoration:none;">
+                    
+                        {% if topbars %}
+                        {% for topbar in topbars %}
+                              <span class="w3-container w3-left  w3-hide-small">
+                              
+                                    <a href="{% url 'index'%}"> <img src="{{ topbar.logo.url }}" class="w3-bar-item w3-circle w3-margin-top " style="width:100px; height:100px;"></a>
+                              </span>
+                        {% endfor %}
+                        {% endif %}
+                    
+                      
+                      </a>
+                        <p> {{ footer.description|safe }}
+                        <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>GLC</span><span>. </span><span>All Rights Reserved.</span></p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <h5>Contacts</h5>
+                      <dl class="contact-list">
+                        <dt>Address:</dt>
+                        <dd>{{ footer.address|safe }}</dd>
+                      </dl>
+                      <dl class="contact-list">
+                        <dt>email:</dt>
+                        <dd><a href="mailto:#" class="w3-button" style="text-decoration:none;">{{ footer.email }}</a></dd>
+                      </dl>
+                      <dl class="contact-list">
+                        <dt>phones:</dt>
+                        <dd><a href="tel:#" class="w3-button" style="text-decoration:none;" >{{ footer.phone1 }}</a> <span>or</span> <a href="tel:#" class="w3-button" style="text-decoration:none;">{{ footer.phone2 }}</a>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="col-md-4 col-xl-3">
+                      <h5>Links</h5>
+                     {% if user.is_staff %}     
+                        <span><a href="https://www.greaterlifeconcern.org/"style="text-decoration:none;">Home</a></span> /
+                        <span><a href="/mobile" style="text-decoration:none;">Mobile</a></span> /
+                        <span><a href="/tablet" style="text-decoration:none;">Tablet</a></span> /
+                        <span><a href="/laptop" style="text-decoration:none;">Laptop</a></span>
+                      {% endif %} 
+                      <ul class="nav-list" style="text-decoration: none;">
+                        {% if user.is_staff %}
+                        <li><a href="{% url 'register' %}" class="w3-bar-item w3-button w3-hover-white" style="text-decoration:none;"><i class="fa fa-user-plus  w3-text-theme-l4"></i> SIGNUP</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li><a href="/profile" class="w3-bar-item w3-button w3-hover-white" style="text-decoration:none;"><i class="fa fa-user-circle-o w3-text- w3-text-white"></i> PROFILE</a></li>
+                        {% endif %}
+                        <li><a href="/gallery" class="w3-bar-item w3-button w3-hover-white" style="text-decoration:none;"><i class="fa fa-th w3-text-white"></i> GALLERY</a></li>
+                        <li><a href="/team" class="w3-bar-item w3-button w3-hover-white" style="text-decoration:none;"><i class="fa fa-users w3-text-white"></i> TEAM</a></li>
+                        <li><a href="#home" class="w3-button w3-round-large w3-highway-red" style="text-decoration:none;"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+                        </li>
+                     
+                      </ul>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                {% for footer in footers %}
+                <div class="row no-gutters  social-container w3-section">
+                  <div class="col"><a class="social-inner w3-hover-white" href="{{ footer.facebook }}" style="text-decoration:none;"><span class="fa fa-facebook w3-xxlarge w3-text-blue"></span><span>Facebook</span></a></div>
+                  <div class="col"><a class="social-inner w3-hover-white" href="{{ footer.instagram }}" style="text-decoration:none;"><span class="fa fa-instagram w3-xxlarge w3-text-amber"></span><span>Instagram</span></a></div>
+                  <div class="col"><a class="social-inner w3-hover-white" href="{{ footer.twitter }}" style="text-decoration:none;"><span class="fa fa-twitter w3-xxlarge w3-text-light-blue"></span><span>Twitter</span></a></div>
+                  <div class="col"><a class="social-inner w3-hover-white" href="{{ footer.linkedin }}" style="text-decoration:none;"><span class="fa fa-linkedin w3-xxlarge w3-text-black"></span><span>Linkedin</span></a></div>
+                  <div class="col"><a class="social-inner w3-hover-white" href="{{ footer.youtube }}" style="text-decoration:none;"><span class="fa fa-youtube w3-xxlarge w3-text-red"></span><span>YOUTUBE</span></a></div>
+                </div>
+             {% endfor %}
+              </footer>-->

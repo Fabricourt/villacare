@@ -45,3 +45,10 @@ class Background_image(models.Model):
     is_published = models.BooleanField(default=True)
     def __str__(self):
         return self.title
+
+class Areas_of_interest(models.Model):
+    location_name = models.ImageField(upload_to='links/%Y/%m/%d/', null=True, blank=True)
+    link_date = models.DateTimeField(default=timezone.now)
+    is_published = models.BooleanField(default=True)
+    def __str__(self):
+        return self.location_name

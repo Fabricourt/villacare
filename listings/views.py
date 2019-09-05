@@ -2,15 +2,22 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, plot_size_choices, location_choices, company_choices, town_choices
 from django.http import HttpResponse
+from home.models import Topbar, Head, Footer
 from .models import Snippet
 from realtors.models import Realtor
 from blog.models import Post
-from pages.models import Background_image
+from pages.models import Background_image, Areas_of_interest
 from.models import Listing
+from abouts.models import About
+from home.models import Topbar, Head, Footer
 
 def index(request):
   listings = Listing.objects.order_by('-list_date').filter(is_published=True)
   posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+  topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+  heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+  footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
+  areas_of_interests = Areas_of_interest.objects.order_by('link_date').filter(is_published=True)[:1]
   background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
 
   paginator = Paginator(listings, 12)
@@ -19,7 +26,11 @@ def index(request):
 
   context = {
     'background_images':'background_images',
+    'areas_of_interests': areas_of_interests,
     'posts':posts,
+    'topbars': topbars,
+    'heads': heads,
+    'footers': footers,  
     'listings': paged_listings,
     'town_choices': town_choices,  
     'company_choices': company_choices,
@@ -33,11 +44,18 @@ def index(request):
 def listing(request, listing_id):
   listing = get_object_or_404(Listing, pk=listing_id)
   posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+  topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+  heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+  footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
+  areas_of_interests = Areas_of_interest.objects.order_by('link_date').filter(is_published=True)[:1]
   background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
 
   context = {
     'background_images':'background_images',
     'posts':posts,
+    'topbars': topbars,
+    'heads': heads,
+    'footers': footers,
     'town_choices': town_choices,  
     'company_choices': company_choices,
     'location_choices': location_choices,
@@ -51,6 +69,10 @@ def listing(request, listing_id):
 def search(request):
   background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
   posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+  areas_of_interests = Areas_of_interest.objects.order_by('link_date').filter(is_published=True)[:1]
+  topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+  heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+  footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
   queryset_list = Listing.objects.order_by('-list_date')
 
   #keywords
@@ -96,6 +118,9 @@ def search(request):
   context = {
         'background_images':'background_images',
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
         'town_choices': town_choices,
         'company_choices': company_choices,
         'location_choices': location_choices,

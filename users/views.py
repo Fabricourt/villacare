@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from pages.models import Background_image
+from home.models import Topbar, Head, Footer
+from blog.models import Post
 
 
 """
@@ -23,6 +25,10 @@ def register(request):
 
 @login_required
 def profile(request):
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
+    posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
     background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -41,6 +47,10 @@ def profile(request):
 
     context = {
         'background_images':'background_images',
+        'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers, 
         'u_form': u_form,
         'p_form': p_form
     }

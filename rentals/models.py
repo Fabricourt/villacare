@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from ckeditor.fields import RichTextField
 from django.utils import timezone
+from realtors.models import Realtor
 from django.contrib.auth.models import User
 
 class Bedroom(models.Model):
@@ -27,6 +28,8 @@ class Type_of_house(models.Model):
 class Rental(models.Model):
     is_4rent = models.BooleanField(default=False)
     name = models.ForeignKey(User, on_delete= models.CASCADE)
+    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING,  blank=True, null=True)
+    company = models.CharField(max_length=200, blank=True, null=True)
     town = models.CharField(max_length=200, blank=True, null=True)
     bedroom = models.ManyToManyField(Bedroom, help_text='Select how many bedrooms')
     bathrooms = models.ManyToManyField(Bathroom, help_text='Select how many bathrooms')

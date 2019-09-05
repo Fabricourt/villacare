@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | {{ photo.name }} {% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.imgx {
+    width: 100%;
+    height: 750px;
+}
+.imgt {
+    width: 100%;
+    height: 350px;
+}
+</style>
+<div class="section w3-black">
+    
+         <h1 class ="w3-topbar w3-bottombar w3-border-blue w3-center">{{photo.name}} Album</h1>
+  
+</div>
+     
+<div class="w3-row-padding w3-center">
+        <div class="w3-col m4">
+                {% if photo %}            
+                  <img src="{{ photo.photo_main.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity w3-card-4 imgt">
+                {% endif %}
+                </div>
+    
+        <div class="w3-col m4">
+                {% if photo.photo_1 %}            
+                  <img src="{{ photo.photo_1.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity w3-card-4 imgt" >
+                {% endif %}
+        </div>
+    
+        <div class="w3-col m4">
+                {% if photo.photo_2 %}            
+                  <img src="{{ photo.photo_2.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity w3-card-4 imgt" >
+                {% endif %}
+        </div>
+        
+    
+      
+    
+      <div class="w3-row-padding w3-center w3-section">
+            <div class="w3-col m4">
+                    {% if photo.photo_3 %}            
+                      <img src="{{ photo.photo_3.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity w3-card-4 imgt">
+                    {% endif %}
+            </div>
+    
+
+            <div class="w3-col m4">
+                    {% if photo.photo_6 %}            
+                      <img src="{{ photo.photo_4.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity w3-card-4 imgt">
+                    {% endif %}
+            </div>
+    
+        <div class="w3-col m4">
+               
+                        {% if photo.photo_5 %}            
+                          <img src="{{ photo.photo_5.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity imgt w3-card-4">
+                        {% endif %}
+                </div>
+    
+    
+    <div class="w3-row-padding w3-center w3-section">
+                <div class="w3-col m4">
+               
+                        {% if photo.photo_6 %}            
+                          <img src="{{ photo.photo_6.url }}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity imgt w3-card-4">
+                        {% endif %}
+                </div>
+      </div>
+      </div>
+    </div>
+    
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+      <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image imgx ">
+        <p id="caption" class="w3-opacity w3-large"></p>
+      </div>
+    </div>
+
+{% endblock %}

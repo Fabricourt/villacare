@@ -3,14 +3,19 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .choices import price_choices,  town_choices, bedroom_choices
+from home.models import Topbar, Head, Footer
 from django.contrib.auth.models import User
 from blog.models import Post
 from .models import House, Bedroom, Bathroom, Type_of_house
-from pages.models import Background_image
+from pages.models import Background_image, Areas_of_interest
 
 def houses(request):
     background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
     posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    areas_of_interests = Areas_of_interest.objects.order_by('link_date').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
     houses = House.objects.order_by('-created_on').filter(is_published=True)
 
     paginator = Paginator(houses, 10)
@@ -18,8 +23,12 @@ def houses(request):
     paged_houses = paginator.get_page(page)    
     context = {
         'background_images':background_images,
+        'areas_of_interests': areas_of_interests,
         'houses':paged_houses,
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
         'bedroom_choices':bedroom_choices,
         'town_choices': town_choices,
         'price_choices': price_choices,
@@ -33,10 +42,16 @@ def house(request, house_id):
     background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
     house = get_object_or_404(House, pk=house_id)
     posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
     context = {
         'background_images':background_images,
         'house': house,
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
     }
     return render(request, 'houses/house.html', context)
 
@@ -45,6 +60,9 @@ def house(request, house_id):
 def searchus(request):
   background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
   posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+  topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+  heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+  footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
   queryset_list = House.objects.all().order_by('-created_on')
  
  
@@ -87,6 +105,9 @@ def searchus(request):
   context = {
         'background_images':background_images,
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
         'bedroom_choices': bedroom_choices,
         'town_choices': town_choices,
         'price_choices': price_choices,

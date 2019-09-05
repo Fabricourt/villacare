@@ -6,18 +6,26 @@ from .choices import price_choices,  town_choices, bedroom_choices, bathroom_cho
 from django.contrib.auth.models import User
 from blog.models import Post
 from .models import Rental, Bedroom, Type_of_house, Bathroom
-from pages.models import Background_image
+from pages.models import Background_image, Areas_of_interest
+from home.models import Topbar, Footer, Head
 
 def rentals(request):
     background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
     posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
     rentals = Rental.objects.order_by('-created_on').filter(is_published=True)
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
+    areas_of_interests = Areas_of_interest.objects.order_by('link_date').filter(is_published=True)[:1]
 
     paginator = Paginator(rentals, 10)
     page = request.GET.get('page')
     paged_rentals = paginator.get_page(page)    
     context = {
         'background_images':background_images,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers, 
         'rentals':paged_rentals,
         'posts':posts,
         'bedroom_choices':bedroom_choices,
@@ -35,10 +43,16 @@ def rental(request, rental_id):
     background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
     rental = get_object_or_404(Rental, pk=rental_id)
     posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
     context = {
         'background_images':background_images,
         'rental': rental,
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers, 
     }
     return render(request, 'rentals/rental.html', context)
 
@@ -47,6 +61,9 @@ def rental(request, rental_id):
 def searchrentals(request):
   background_images = Background_image.objects.order_by('link_date').filter(is_published=True)[:1]
   posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+  topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+  heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+  footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1]
   queryset_list = Rental.objects.all().order_by('-created_on')
  
  
@@ -100,6 +117,9 @@ def searchrentals(request):
   context = {
         'background_images':background_images,
         'posts':posts,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
         'bedroom_choices': bedroom_choices,
         'bathroom_choices': bathroom_choices,
         'type_of_house_choices': type_of_house_choices,

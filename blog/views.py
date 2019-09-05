@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404 
+from home.models import Topbar, Head, Footer
 from django.views.generic import (
     ListView,
     DetailView,
@@ -15,8 +16,14 @@ from django.contrib.auth.models import User
 
 
 def index(request):
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1] 
+
     context = {
-        
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
         'posts': Post.objects.all(),
     }
     return render(request, 'blog/blog.html', context)
@@ -24,10 +31,16 @@ def index(request):
 def post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     posts = Post.objects.order_by('-date_posted').filter(is_published=True)[:3]
+    topbars = Topbar.objects.order_by('-reload').filter(is_published=True)[:1]
+    heads = Head.objects.order_by('-reload').filter(is_published=True)[:1]
+    footers = Footer.objects.order_by('-reload').filter(is_published=True)[:1] 
 
     context = {
         'posts':posts,
-        'post': post
+        'post': post,
+        'topbars': topbars,
+        'heads': heads,
+        'footers': footers,
     }
 
     return render(request, 'blog/post.html', context)
